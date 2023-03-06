@@ -1,14 +1,11 @@
 {
-  "name": "Webpage to PDF",
+  "name": "Resume IA",
   "version": "1.0",
-  "description": "Converts the current webpage to a PDF",
+  "description": "Resumes articles, news and blogs",
   "permissions": [
     "activeTab",
     "scripting",
     "tabs"
-  ],
-  "host_permissions": [
-    "https://nookdeco.com.ar/"
   ],
   "action": {
     "default_popup": "popup.html"

@@ -3,15 +3,7 @@ const resumeButton = document.getElementById("resume-button");
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   const web = request.web;
 
-  const opt = {
-    margin: 1,
-    filename: `$web.pdf`,
-    image: {type: "jpeg", quality: 0.98},
-    html2canvas: {scale: 1.5},
-    jsPDF: {unit: "in", format: "letter", orientation: "portrait"},
-  };
-
-  html2pdf(web, opt);
+  return "";
 });
 
 resumeButton.addEventListener("click", async () => {
