@@ -1,0 +1,18 @@
+{
+  "name": "Webpage to PDF",
+  "version": "1.0",
+  "description": "Converts the current webpage to a PDF",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://nookdeco.com.ar/"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 3
+}
+
