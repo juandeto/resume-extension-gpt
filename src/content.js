@@ -1,13 +1,16 @@
 const resumeButton = document.getElementById("resume-button");
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  const web = request.web;
+  const text = request.text;
   const url = request.url;
   console.log("url: ", url);
-  console.log("web: ", web);
+  console.log("text: ", text);
+
+  // here we will call the gpt function with the text and the user options
   return "";
 });
 
+// function that runs when "generate resume" is clicked
 resumeButton.addEventListener("click", async () => {
   let [tab] = await chrome.tabs.query({active: true, currentWindow: true});
 
@@ -18,10 +21,25 @@ resumeButton.addEventListener("click", async () => {
 });
 
 function getContentToResume() {
-  const web = document.body.innerHTML;
-
   const url = document.querySelector('link[rel="canonical"]')?.href;
-  chrome.runtime.sendMessage({web, url});
+
+  // 0. Check the url and depending on it use different selectors
+  // const selectors = getSelectors(url)
+
+  // 0.1. Get the headline string
+  // example -> const headline = document.querySelector(selectors.headline)
+  // const headlineString = getInnerTextRecursive(headline)
+
+  // 0.2. Get the body string
+  // example -> const body = document.querySelector(selectors.body)
+  // const bodyString = getInnerTextRecursive(body)
+
+  // 0.3. Join the string
+  // const const text = headlineString + ' ' + bodyString
+
+  const text = "hola";
+
+  chrome.runtime.sendMessage({text, url});
 }
 
 function getInnerTextRecursive(element) {
@@ -44,4 +62,18 @@ function getInnerTextRecursive(element) {
   }
   // return the concatenated text
   return text;
+}
+
+function getSelectors(url) {
+  const selectors = new Map([
+    ["lanacion", {headline: "", body: ""}],
+    ["clarin", {headline: "", body: ""}],
+    ["infobae", {headline: "", body: ""}],
+  ]);
+
+  selectors.forEach((value, key) => {
+    if (`/${key}/g`.test(url)) {
+      return value;
+    }
+  });
 }
