@@ -37,16 +37,10 @@ g. Now every time you make a change, you will go back to Settings > Extensions a
       
     ## 4. Webs to include
     
--https://www.lanacion.com
-
--https://www.infobae.com
-
--https://www.clarin.com
-
--https://www.eldiarioar.com
-
--https://www.perfil.com/
-
--https://cenital.com/
-
--https://elpais.com/america/
+- https://www.lanacion.com
+- https://www.infobae.com
+- https://www.clarin.com
+- https://www.eldiarioar.com
+- https://www.perfil.com/
+- https://cenital.com/
+- https://elpais.com/america/
