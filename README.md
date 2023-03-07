@@ -1,5 +1,9 @@
 # resume-extension-gpt
 
+## Description
+
+     An extension that scrapes the article of the current tab the user is on and with the Chat Gpt API it creates a summary of the content in different formats the user can select: in paragraphs, tweets, bullets. The user also can choose the length of the resume.
+
 ## 1. How to start collaborating:
      
      a. open a terminal and clone the repo: git clone https://github.com/juandeto/resume-extension-gpt.git
