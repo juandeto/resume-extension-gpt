@@ -2,7 +2,9 @@ const resumeButton = document.getElementById("resume-button");
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   const web = request.web;
-
+  const url = request.url;
+  console.log("url: ", url);
+  console.log("web: ", web);
   return "";
 });
 
@@ -18,7 +20,8 @@ resumeButton.addEventListener("click", async () => {
 function getContentToResume() {
   const web = document.body.innerHTML;
 
-  chrome.runtime.sendMessage({web});
+  const url = document.querySelector('link[rel="canonical"]')?.href;
+  chrome.runtime.sendMessage({web, url});
 }
 
 function getInnerTextRecursive(element) {
