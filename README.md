@@ -46,3 +46,4 @@ g. Now every time you make a change, you will go back to Settings > Extensions a
 - https://www.perfil.com/
 - https://cenital.com/
 - https://elpais.com/america/
+- https://medium.com/
