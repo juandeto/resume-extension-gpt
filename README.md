@@ -29,10 +29,10 @@ c. Go to *Extensions*
       
 d. Make sure *developer mode* is active
       
-c. Then grab the folder src and drag it into the browser.
+e. Then grab the folder src and drag it into the browser.
       
-d. After this,you will see the extension listed in the *Extensions* menu.
+f. After this,you will see the extension listed in the *Extensions* menu.
       
-e. Now every time you make a change, you will go back to Settings > Extensions and *reload* the extension. (You will see there's a reload button in the extension block)
+g. Now every time you make a change, you will go back to Settings > Extensions and *reload* the extension. (You will see there's a reload button in the extension block)
       
      
