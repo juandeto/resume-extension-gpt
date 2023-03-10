@@ -13,13 +13,13 @@ b. go into the folder of the project and create a new branch: git checkout -b MY
 c. after you finish the task: add the changes you want to save, make a commit and then push the branch to the remote.
      
   
- ## 2. Structure of the project.
+## 2. Structure of the project.
  
       <root>
         ├── src             => this is the extension
         ├── api             => this is the python api
    
-  ## 3. How to test and develop the extensión.
+## 3. How to test and develop the extensión.
   
 a. open the Chrome browser and click on the *Menu options* (the three points at the right in the bar)
       
@@ -36,3 +36,14 @@ d. After this,you will see the extension listed in the *Extensions* menu.
 e. Now every time you make a change, you will go back to Settings > Extensions and *reload* the extension. (You will see there's a reload button in the extension block)
       
      
+## To run the API locally
+
+First, make sure you have installed python3 and pipenv. 
+  - For Windows: https://www.youtube.com/watch?v=l2_5wiYg5dY&ab_channel=CodingEntrepreneurs
+  - For MacOs: https://www.youtube.com/watch?v=VdKqxxjUGhQ&ab_channel=CodingEntrepreneurs
+
+a. Open a terminal and navigate to the root/api folder
+b. Create a file .env ann add the variable OPENAI_API_KEY. There's a -env-example if you want to checkout.
+b. Run the command: pipenv shell
+b. Then run the command: uvicorn main:app --reload
+c. In your browser go to http://localhost:8000/docs to see the project documentation

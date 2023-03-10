@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 // function that runs when "generate resume" is clicked
 resumeButton.addEventListener("click", async () => {
   let [tab] = await chrome.tabs.query({active: true, currentWindow: true});
-
+  console.log("tab: ", tab);
   chrome.scripting.executeScript({
     target: {tabId: tab.id},
     func: getContentToResume,
@@ -19,5 +19,6 @@ resumeButton.addEventListener("click", async () => {
 });
 
 async function getContentToResume(url) {
+  console.log("url: ", url);
   chrome.runtime.sendMessage({url});
 }
