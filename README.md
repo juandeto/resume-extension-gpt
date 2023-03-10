@@ -13,7 +13,7 @@ b. go into the folder of the project and create a new branch: git checkout -b MY
      
 c. after you finish the task: add the changes you want to save, make a commit and then push the branch to the remote.
      
- 
+     
 ## 2. Structure of the project.
  
       <root>
@@ -36,14 +36,16 @@ e. Then grab the folder src and drag it into the browser.
 f. After this,you will see the extension listed in the *Extensions* menu.
       
 g. Now every time you make a change, you will go back to Settings > Extensions and *reload* the extension. (You will see there's a reload button in the extension block)
-      
-  ## 4. Webs to include
-    
-- https://www.lanacion.com
-- https://www.infobae.com
-- https://www.clarin.com
-- https://www.eldiarioar.com
-- https://www.perfil.com/
-- https://cenital.com/
-- https://elpais.com/america/
-- https://medium.com/
+
+## To run the API locally
+
+First, make sure you have installed python3 and pipenv. 
+  - For Windows: https://www.youtube.com/watch?v=l2_5wiYg5dY&ab_channel=CodingEntrepreneurs
+  - For MacOs: https://www.youtube.com/watch?v=VdKqxxjUGhQ&ab_channel=CodingEntrepreneurs
+
+a. Open a terminal and navigate to the root/api folder
+b. Create a file .env ann add the variable OPENAI_API_KEY. There's a -env-example if you want to checkout.
+c. Run the command: pipenv shell
+d. Then run the command: uvicorn main:app --reload
+e. In your browser go to http://localhost:8000/docs to see the project documentation
+

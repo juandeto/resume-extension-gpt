@@ -1,47 +1,24 @@
 const resumeButton = document.getElementById("resume-button");
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  const web = request.web;
   const url = request.url;
   console.log("url: ", url);
-  console.log("web: ", web);
+  // here we will call the gpt function with the text and the user options
   return "";
 });
 
+// function that runs when "generate resume" is clicked
 resumeButton.addEventListener("click", async () => {
   let [tab] = await chrome.tabs.query({active: true, currentWindow: true});
-
+  console.log("tab: ", tab);
   chrome.scripting.executeScript({
     target: {tabId: tab.id},
     func: getContentToResume,
+    args: [tab.url],
   });
 });
 
-function getContentToResume() {
-  const web = document.body.innerHTML;
-
-  const url = document.querySelector('link[rel="canonical"]')?.href;
-  chrome.runtime.sendMessage({web, url});
-}
-
-function getInnerTextRecursive(element) {
-  let text = "";
-
-  // check if the element has child nodes
-  if (element.childNodes.length > 0) {
-    // loop over the child nodes
-    for (let i = 0; i < element.childNodes.length; i++) {
-      const child = element.childNodes[i];
-      // if the child is a text node, append its content to the text variable
-      if (child.nodeType === Node.TEXT_NODE) {
-        text += child.textContent;
-      }
-      // if the child is an element node, recursively call this function on the child and append its inner text to the text variable
-      else if (child.nodeType === Node.ELEMENT_NODE) {
-        text += getInnerTextRecursive(child);
-      }
-    }
-  }
-  // return the concatenated text
-  return text;
+async function getContentToResume(url) {
+  console.log("url: ", url);
+  chrome.runtime.sendMessage({url});
 }
