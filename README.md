@@ -44,8 +44,12 @@ First, make sure you have installed python3 and pipenv.
   - For MacOs: https://www.youtube.com/watch?v=VdKqxxjUGhQ&ab_channel=CodingEntrepreneurs
 
 a. Open a terminal and navigate to the root/api folder
+
 b. Create a file .env ann add the variable OPENAI_API_KEY. There's a -env-example if you want to checkout.
+
 c. Run the command: pipenv shell
+
 d. Then run the command: uvicorn main:app --reload
+
 e. In your browser go to http://localhost:8000/docs to see the project documentation
 
