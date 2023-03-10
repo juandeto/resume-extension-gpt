@@ -37,7 +37,7 @@ f. After this,you will see the extension listed in the *Extensions* menu.
       
 g. Now every time you make a change, you will go back to Settings > Extensions and *reload* the extension. (You will see there's a reload button in the extension block)
 
-## To run the API locally
+## 4. To run the API locally
 
 First, make sure you have installed python3 and pipenv. 
   - For Windows: https://www.youtube.com/watch?v=l2_5wiYg5dY&ab_channel=CodingEntrepreneurs
