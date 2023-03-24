@@ -6,10 +6,20 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="title">Resume IA</div>
-    <div class="button-container">
-        <button type="button" id="resume-button">Get Resume</button>
-    </div>
-    <script src="content.js"></script>
+    <main id="main-container">
+        <div class="title" role="heading">
+            <h1>Welcome to TextIA</h1>
+            <h2>Select what you want to do:</h2>
+        </div>
+        <div class="option-box">
+            <p>Explain the selected text in different levels of difficulty</p>
+            <button type="button" class="primary-button" id="explain-as-button">Explain as</button>
+        </div>
+        <div class="option-box">
+            <p>Summarize the selected text in different formats, languages, etc</p>
+            <button type="button" class="primary-button" id="summary-button">Summarize</button>
+        </div>
+    </main>
+    <script src="scripts/index.js"></script>
 </body>
 </html>
