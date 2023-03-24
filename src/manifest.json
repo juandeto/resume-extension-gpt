@@ -1,12 +1,19 @@
 {
-  "name": "Resume IA",
+  "name": "Summary IA",
   "version": "1.0",
-  "description": "Resumes articles, news and blogs",
+  "description": "Summarizes articles, news and blogs",
   "permissions": [
-    "activeTab",
-    "scripting",
-    "tabs"
+    "contextMenus"
   ],
+  "icons": {
+    "16": "assets/magic-wand.png",
+    "32": "assets/magic-wand.png",
+    "48": "assets/magic-wand.png",
+    "128": "assets/magic-wand.png"
+  },
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
   "action": {
     "default_popup": "popup.html"
   },

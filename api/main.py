@@ -1,4 +1,5 @@
 from fastapi import APIRouter, FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from routes.chatGPT import prefix_gpt
 
 app = FastAPI()
@@ -11,3 +12,13 @@ def root():
 
 app.include_router(prefix_router)
 app.include_router(prefix_gpt)
+
+origins=["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = origins,
+    allow_credentials = True,
+    allow_methods = ["*"],
+    allow_headers = ["*"]
+)
