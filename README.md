@@ -32,11 +32,11 @@ d. Make sure *developer mode* is active
 c. Then grab the folder src and drag it into the browser.
       
 d. After this,you will see the extension listed in the *Extensions* menu.
-      
+
 e. Now every time you make a change, you will go back to Settings > Extensions and *reload* the extension. (You will see there's a reload button in the extension block)
       
-     
-## To run the API locally
+
+## 4. To run the API locally
 
 First, make sure you have installed python3 (v. 3.8) and pipenv. 
   - For Windows: https://www.youtube.com/watch?v=l2_5wiYg5dY&ab_channel=CodingEntrepreneurs
@@ -44,6 +44,6 @@ First, make sure you have installed python3 (v. 3.8) and pipenv.
 
 a. Open a terminal and navigate to the root/api folder
 b. Create a file .env ann add the variable OPENAI_API_KEY. There's a -env-example if you want to checkout.
-b. Run the command: pipenv shell
-b. Then run the command: uvicorn main:app --reload
-c. In your browser go to http://localhost:8000/docs to see the project documentation
+c. Run the command: pipenv shell
+d. Then run the command: uvicorn main:app --reload
+e. In your browser go to http://localhost:8000/docs to see the project documentation
