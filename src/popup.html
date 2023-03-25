@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;600&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <main id="main-container">
@@ -11,13 +18,15 @@
             <h1>Welcome to TextIA</h1>
             <h2>Select what you want to do:</h2>
         </div>
-        <div class="option-box">
-            <p>Explain the selected text in different levels of difficulty</p>
-            <button type="button" class="primary-button" id="explain-as-button">Explain as</button>
-        </div>
-        <div class="option-box">
-            <p>Summarize the selected text in different formats, languages, etc</p>
-            <button type="button" class="primary-button" id="summary-button">Summarize</button>
+        <div class="options-container">
+            <div class="option-box" id="explain-box">
+               <h3>Explain text as</h3>
+                <p>Explain the selected text in different levels of difficulty</p>
+            </div>
+            <div class="option-box" id="summary-box">
+                <h3>Summarize text</h3>
+                <p>Summarize the selected text in different formats, languages, etc</p>
+            </div>
         </div>
     </main>
     <script src="scripts/index.js"></script>

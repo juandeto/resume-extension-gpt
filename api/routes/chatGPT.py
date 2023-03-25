@@ -8,8 +8,10 @@ import openai
 import os
 import re
 
-openai.api_key = os.getenv('OPENAI_API_KEY')
+openai.api_key = os.environ['OPENAI_API_KEY']
 
+print("ENVIRON")
+print(os.environ['OPENAI_API_KEY'])
 prefix_gpt = APIRouter(prefix="/api")
 
 p1 = "Eres un asistente que nunca dice" 
@@ -82,16 +84,16 @@ async def get_explanation(body: ExplanationBody):
     else: 
         create_limit(db, today)
         
-    prompt = createPromptExplanation(body.text, body.years, body.asFrom, body.language)
+    prompt = createPromptExplanation(body.text, body.years, body.language)
 
     return prompt
-    # explanation = openai.ChatCompletion.create(
-    #     model="gpt-3.5-turbo",
-    #     messages=[
-    #             {"role": "user", "content": prompt},
-    #         ]
-    #     )
-    # print(f'explanation: {explanation}' )
-    # if explanation["choices"][0]["finish_reason"] == "stop":
-    #     return explanation["choices"][0]["message"]["content"]
-    # raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Try again.")
+    explanation = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+                {"role": "user", "content": prompt},
+            ]
+        )
+    print(f'explanation: {explanation}' )
+    if explanation["choices"][0]["finish_reason"] == "stop":
+        return explanation["choices"][0]["message"]["content"]
+    raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Try again.")

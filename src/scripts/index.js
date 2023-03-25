@@ -1,10 +1,10 @@
-const explainAsButton = document.getElementById("explain-as-button");
-const summaryButton = document.getElementById("summary-button");
+const explainBox = document.getElementById("explain-box");
+const summaryBox = document.getElementById("summary-box");
 const mainBody = document.getElementById("main-container");
 
-summaryButton.addEventListener("click", () => setSummaryHtml());
+summaryBox.addEventListener("click", () => setSummaryHtml());
 
-explainAsButton.addEventListener("click", () => setExplainAsHtml());
+explainBox.addEventListener("click", () => setExplainAsHtml());
 
 function setSummaryHtml() {
   mainBody.innerHTML = `
@@ -67,18 +67,10 @@ function setExplainAsHtml() {
       <div class="option-container">
           <label for="years" class="label">As if I'm</label>
           <select name="years" id="years">
+              <option value="adult">Adult explanation</option>
               <option value="5 years old">5 years old</option>
               <option value="10 years old">10 years old</option>
               <option value="14 years old">14 years old</option>
-              <option value="adult">adult explanation</option>
-          </select>
-      </div>
-      <div class="option-container" >
-          <label for="from" class="label">As if it was explained from</label>
-          <select name="long" id="from">
-              <option value="default">Don't use this option</option>
-              <option value="a grandfather or grandmother">a grandfather or grandmother</option>
-              <option value="kindergarden teacher">kindergarden teacher</option>
           </select>
       </div>
       <div class="option-container">

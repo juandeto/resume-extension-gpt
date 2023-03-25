@@ -77,17 +77,23 @@ function setSummaryHtml() {
   <div class="answer-content" id="answer-content">
   </div>
   <div class="answer-options">
-    <button class="answer-button" id="expand-answer">
-      <img src="./assets/copy.svg" alt="copy icon" />
-      <span class="copy-text">Expand</span>
+    <button class="icon-button" id="expand-answer">
+      <span class="circle">
+        <img src="./assets/copy.svg" alt="copy icon" />
+      </span>
+      <span class="hover-text">Expand</span>
     </button>
-    <button class="answer-button" id="copy-answer">
-      <img src="./assets/copy.svg" alt="copy icon" />
-      <span class="copy-text">Copy</span>
+    <button class="icon-button" id="copy-answer">
+      <span class="circle">
+        <img src="./assets/copy.svg" alt="copy icon" />
+      </span>
+      <span class="hover-text">Copy</span>
     </button>
-    <button class="answer-button" id="download-answer">
-      <img src="./assets/download.svg" alt="download icon" />
-      <span>Download</span>
+    <button class="icon-button" id="download-answer">
+    <span class="circle">
+        <img src="./assets/download.svg" alt="download icon" />
+      </span>
+      <span class="hover-text">Download</span>
     </button>
   </div>
         `;
