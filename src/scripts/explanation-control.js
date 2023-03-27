@@ -20,7 +20,7 @@ formExplanationElem.addEventListener("submit", async (e) => {
   try {
     setSpinner(true);
     const fetchOptions = buildExplainFetchOptions();
-    console.log("fetchOptions: ", fetchOptions);
+
     const res = await fetch(`http://localhost:8000/api/explain`, fetchOptions);
 
     await res.json().then((text) => {
@@ -61,15 +61,17 @@ function buildExplainFetchOptions() {
 function setExplanationHtml() {
   mainContainer.innerHTML = `
   <div class="title" role="heading">
-    <h1>IA Resume</h1>
+    <h1>Bluesetta-GPT</h1>
+    <img src="./assets/rosetta.png" />
+    </div>
+    <div class="answer-container">
     <h2>Your explanation:</h2>
-  </div>
-  <div class="answer-content" id="answer-content">
-  </div>
+    <div class="answer-content" id="answer-content">
+    </div>
   <div class="answer-options">
     <button class="icon-button" id="expand-answer">
       <span class="circle">
-        <img src="./assets/copy.svg" alt="copy icon" />
+        <img src="./assets/expand.svg" alt="copy icon" />
       </span>
       <span class="hover-text">Expand</span>
     </button>
@@ -77,7 +79,7 @@ function setExplanationHtml() {
       <span class="circle">
         <img src="./assets/copy.svg" alt="copy icon" />
       </span>
-      <span class="hover-text">Copy</span>
+      <span class="hover-text copy-text">Copy</span>
     </button>
     <button class="icon-button" id="download-answer">
       <span class="circle">
@@ -85,6 +87,7 @@ function setExplanationHtml() {
       </span>
       <span class="hover-text">Download</span>
     </button>
+  </div>
   </div>
         `;
   const script = document.createElement("script");

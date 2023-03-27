@@ -10,9 +10,6 @@ prefix_router = APIRouter(prefix="/api")
 def root():
     return {"message": "hello"}
 
-app.include_router(prefix_router)
-app.include_router(prefix_gpt)
-
 origins=["*"]
 
 app.add_middleware(
@@ -22,3 +19,6 @@ app.add_middleware(
     allow_methods = ["*"],
     allow_headers = ["*"]
 )
+app.include_router(prefix_router)
+app.include_router(prefix_gpt)
+

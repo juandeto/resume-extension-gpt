@@ -71,31 +71,34 @@ function buildFetchOptions() {
 function setSummaryHtml() {
   mainContainer.innerHTML = `
   <div class="title" role="heading">
-    <h1>IA Resume</h1>
-    <h2>Your summary:</h2>
-  </div>
-  <div class="answer-content" id="answer-content">
-  </div>
-  <div class="answer-options">
-    <button class="icon-button" id="expand-answer">
+    <h1>Bluesetta-GPT</h1>
+    <img src="./assets/rosetta.png" />
+    </div>
+    <div class="answer-container">
+    <h2>Your explanation:</h2>
+    <div class="answer-content" id="answer-content">
+    </div>
+    <div class="answer-options">
+      <button class="icon-button" id="expand-answer">
+        <span class="circle">
+          <img src="./assets/expand.svg" alt="copy icon" />
+        </span>
+        <span class="hover-text">Expand</span>
+      </button>
+      <button class="icon-button" id="copy-answer">
+        <span class="circle">
+          <img src="./assets/copy.svg" alt="copy icon" />
+        </span>
+        <span class="hover-text copy-text">Copy</span>
+      </button>
+      <button class="icon-button" id="download-answer">
       <span class="circle">
-        <img src="./assets/copy.svg" alt="copy icon" />
-      </span>
-      <span class="hover-text">Expand</span>
-    </button>
-    <button class="icon-button" id="copy-answer">
-      <span class="circle">
-        <img src="./assets/copy.svg" alt="copy icon" />
-      </span>
-      <span class="hover-text">Copy</span>
-    </button>
-    <button class="icon-button" id="download-answer">
-    <span class="circle">
-        <img src="./assets/download.svg" alt="download icon" />
-      </span>
-      <span class="hover-text">Download</span>
-    </button>
-  </div>
+          <img src="./assets/download.svg" alt="download icon" />
+        </span>
+        <span class="hover-text">Download</span>
+      </button>
+    </div>
+    </div>
         `;
   const script = document.createElement("script");
   script.src = "scripts/result-handlers.js";

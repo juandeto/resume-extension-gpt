@@ -13,22 +13,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="gradient"></div>
     <main id="main-container">
-        <div class="title" role="heading">
-            <h1>Welcome to TextIA</h1>
-            <h2>Select what you want to do:</h2>
-        </div>
-        <div class="options-container">
-            <div class="option-box" id="explain-box">
-               <h3>Explain text as</h3>
-                <p>Explain the selected text in different levels of difficulty</p>
+        <div class="index-view">
+            <div class="title" role="heading">
+                <h1>Bluesetta-GPT</h1>
+                <img src="./assets/rosetta.png" />
             </div>
-            <div class="option-box" id="summary-box">
-                <h3>Summarize text</h3>
-                <p>Summarize the selected text in different formats, languages, etc</p>
+            <div class="options-container">
+                <div class="option-box" id="explain-box">
+                    <div class="option-headline">
+                        <h3>Explain text as</h3>
+                        <img src="./assets/arrow_foward.svg" />
+                    </div>
+                    <p>Explain the selected text in different levels of difficulty</p>
+                </div>
+                <div class="option-box" id="summary-box">
+                    <div class="option-headline">
+                        <h3>Summarize text</h3>
+                        <img src="./assets/arrow_foward.svg" />
+                    </div>
+                    <p>Summarize the selected text in different formats, languages, etc</p>
+                </div>
             </div>
         </div>
     </main>
-    <script src="scripts/index.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

@@ -9,6 +9,7 @@ const paragraphs = document.querySelectorAll(".typewriter");
 // methods in the menu options
 
 copyButton?.addEventListener("click", () => {
+  console.log("copyButton: ", copyButton);
   copyContent(answerContent.innerText);
   copyText.innerText = "Copied to clipboard";
 });
@@ -22,7 +23,7 @@ async function copyContent(text) {
 }
 
 downloadButton.addEventListener("click", () => {
-  downloadText(summaryContent.innerText);
+  downloadText(answerContent.innerText);
 });
 
 function downloadText(text) {
@@ -47,9 +48,9 @@ async function expandCurrentWindow() {
   const window = await chrome.windows.getCurrent();
 
   await chrome.windows.update(window.id, {
-    width: 700,
-    height: 800,
-    left: 200,
+    width: 393,
+    height: 850,
+    left: 0,
   });
   console.log("window: ", window);
 }

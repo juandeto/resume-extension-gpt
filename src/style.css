@@ -22,76 +22,126 @@ body {
     box-shadow: 0px 60px 100px rgba(0, 0, 0, 0.25);
     font-family: 'prompt', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
 
+    .gradient{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(65.67% 65.67% at 41.2% 34.33%, #4BD4FF 0%, rgba(208, 75, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+      filter: blur(286.13px);
+      border-radius: 1120.23px;
+      transform: rotate(62.18deg);
+  
+    }
 #main-container {
   height: 100%;
   margin: 0 auto;
-  padding: 16px;
+}
+
+.index-view {
+  height: 100%;
+  margin: 0 auto;
 }
 
 .title {
+    position: relative;
     text-align: left;
-    margin-bottom: 12px;
+    padding: 16px;
+    padding-bottom: 0;
+    height: 230px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .title h1 {
-    text-align: left;
+  position: relative;
+    text-align: center;
     font-style: normal;
-    color: var(--blue);
+    color: rgba(0, 0, 0, 0.8);
     font-weight: 700;
     font-size: 30px;
     line-height: 22px;
+    z-index: 1;
 }
 
-
-.title h2 {
-    font-size: 18px;
-    text-align: left;
-    font-style: normal;
-    font-weight: 400;
+.title img {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  top: 58px;
+  left: 50%;
+  transform: translateX(-50%);
 }
-
 
 #main-container form {
-  height: calc(100% - 94px);
+  height: calc(100% - 230px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(2px);
+  background-size: 100%;
+  overflow: hidden;
+}
+
+#main-container h2 {
+  width: 100%;
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.options-container {
+  padding: 16px;
+  height: calc(100% - 230px);
   max-height: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-}
-
-.options-container {
-  height: calc(100% - 78px);
-  max-height: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-evenly;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+  background-size: 100%;
 }
 
 .option-box {
   padding: 16px;
   border-radius: 8px;
-  border: 2px solid var(--blue-light);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   margin-bottom: 16px;
-  max-width: 700px;
+  max-width: 500px;
   transition: all 400ms ease;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 18px 213px 85px rgb(0 0 0 / 1%), 10px 120px 72px rgb(0 0 0 / 5%), 5px 53px 53px rgb(0 0 0 / 9%), 1px 13px 29px rgb(0 0 0 / 10%), 0px 0px 0px rgb(0 0 0 / 10%);
-  backdrop-filter: blur(50px);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(30px);
+  /* Note: backdrop-filter has minimal browser support */
+  width: 100%;
+  border-radius: 20px;
 }
 
 .option-box:hover {
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid var(--blue-light);
+
 }
 
-.option-box h3 {
+.option-headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.option-headline h3 {
   font-size: 1.35rem;
   line-height: 1.75;
   margin-block: 0;
+  letter-spacing: -0.408px;
+  font-feature-settings: 'case' on;
 }
 
 .option-box p {
@@ -125,13 +175,20 @@ body {
 
 .button-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
 
-.button-container button {
+#get-key {
+  margin-top: 16px;
+}
+
+.button-container button, #get-key {
     width: 100%;
+    max-width: 500px;
+
     color: var(--white);    border: none;
     cursor: pointer;
     height: 45px;
@@ -152,50 +209,75 @@ body {
 .option-container {
     padding: 8px 0;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
+    max-width: 500px;
+
 }
 
 .checkbox {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
     margin-top: 16px;
 }
 
-
-.option-container label {
-    font-size: 18px;
-    width: 50%;
-}
-
-
-.option-container select {
-    font-size: 18px;
-    width: 100%;
-    padding: 6px;
-    border-radius: 4px;
-    margin-left: auto;
-background-blend-mode: overlay;
-border: 0.5px solid #000000;
-backdrop-filter: blur(30px);
-/* Note: backdrop-filter has minimal browser support */
-color: rgba(0, 0, 0, 0.6);
-text-align: center;
-border-radius: 16px;
-border-color: rgba(0,0,0, 0.3);
+input, select {
+  font-size: 18px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  margin-left: auto;
+  background-blend-mode: overlay;
+  backdrop-filter: blur(30px);
+  /* Note: backdrop-filter has minimal browser support */
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  border-radius: 16px;
+  border-color: rgba(0,0,0, 0.3);
 }
 
 .option-container select option {
   color: rgba(0, 0, 0, 0.6);
 }
 
+.checkbox label {
+  width: 80% !important;
+}
+
+
+.option-container label {
+    font-size: 18px;
+    width: 50%;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 8px;
+}
+
+.answer-container {
+  position: absolute;
+  top: 120px;
+  width: 100%;
+  padding: 16px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+  background-size: 100%;
+  
+}
+
 .answer-content {
     margin-bottom: 16px;
-    height: calc(100% - 176px);
+    height: calc(100% - 196px);
     overflow: auto;
     background: var(--white);
     border-radius: 4px;
     padding: 6px;
-    border: 1px solid var(--blue);
+    border: 1px solid var(--blue-light);
 
   }
 
@@ -258,10 +340,10 @@ border-color: rgba(0,0,0, 0.3);
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
-  background: linear-gradient(151.01deg, #81C6ED 1.14%, #326AD2 92.66%);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(139.57deg, #B9C9E9 13.2%, #9EB1D6 77%);
+  box-shadow: 0px 0.5px 0.5px rgba(0, 0, 0, 0.25), 0px 10px 20px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(30px);
-  color: var(--white);
+  color: rgba(0, 0, 0, 0.8);
   transition: opacity 400ms ease;
 }
 
@@ -278,22 +360,33 @@ border-color: rgba(0,0,0, 0.3);
   background: none;
   color: var(--blue);
   cursor: pointer;
-  background: linear-gradient(151.01deg, #81C6ED 1.14%, #326AD2 92.66%);
   border-radius: 50px;
+  background: linear-gradient(139.57deg, #B9C9E9 13.2%, #9EB1D6 77%);
+  box-shadow: 0px 0.5px 0.5px rgba(0, 0, 0, 0.25), 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.key-error {
+  justify-content: space-between !important;
 }
 
 .error-content {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 20px;
-    margin-bottom: 16px;
-}
-
-.error-explanation {
-    font-size: 16px;
-    line-height: 20px;
+    font-weight: 500;
     margin-bottom: 16px;
     color: red;
 }
+
+.error-explanation p {
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.error-explanation small {
+  font-size: 14px;
+  line-height: 16px;
+}
+
 
 .spinner-container {
     width: 100%;
