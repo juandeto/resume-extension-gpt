@@ -1,14 +1,13 @@
-const mainContainer = document.getElementById("main-container");
-const formatValue = document.getElementById("format");
-const longValue = document.getElementById("long");
-const translateValue = document.getElementById("language");
-const explainAsFiveValue = document.getElementById("explain-as-five");
-const resumeButton = document.getElementById("summary-submit-button");
-const formElem = document.querySelector("#summary-form");
+var formatValue = document.getElementById("format");
+var longValue = document.getElementById("long");
+var translateValue = document.getElementById("language");
+var explainAsFiveValue = document.getElementById("explain-as-five");
+var resumeButton = document.getElementById("summary-submit-button");
+var formElem = document.querySelector("#summary-form");
 
-const urlParams = new URLSearchParams(window.location.search);
-const selectedText = urlParams.get("text");
-const MAX_LENGTH_TEXT = 5000;
+var urlParams = new URLSearchParams(window.location.search);
+var selectedText = urlParams.get("text");
+var MAX_LENGTH_TEXT = 5000;
 var answerSummary;
 var speed = 35;
 
@@ -29,7 +28,10 @@ formElem.addEventListener("submit", async (e) => {
     setSpinner(true);
     const fetchOptions = buildFetchOptions();
 
-    const res = await fetch(`http://localhost:8000/api/summary`, fetchOptions);
+    const res = await fetch(
+      `https://nookdeco.com.ar/gptapi/summary`,
+      fetchOptions
+    );
 
     await res.json().then((text) => {
       setSpinner(false);
@@ -68,43 +70,6 @@ function buildFetchOptions() {
   return fetchOptions;
 }
 
-function setSummaryHtml() {
-  mainContainer.innerHTML = `
-  <div class="title" role="heading">
-    <h1>Bluesetta-GPT</h1>
-    <img src="./assets/rosetta.png" />
-    </div>
-    <div class="answer-container">
-    <h2>Your explanation:</h2>
-    <div class="answer-content" id="answer-content">
-    </div>
-    <div class="answer-options">
-      <button class="icon-button" id="expand-answer">
-        <span class="circle">
-          <img src="./assets/expand.svg" alt="copy icon" />
-        </span>
-        <span class="hover-text">Expand</span>
-      </button>
-      <button class="icon-button" id="copy-answer">
-        <span class="circle">
-          <img src="./assets/copy.svg" alt="copy icon" />
-        </span>
-        <span class="hover-text copy-text">Copy</span>
-      </button>
-      <button class="icon-button" id="download-answer">
-      <span class="circle">
-          <img src="./assets/download.svg" alt="download icon" />
-        </span>
-        <span class="hover-text">Download</span>
-      </button>
-    </div>
-    </div>
-        `;
-  const script = document.createElement("script");
-  script.src = "scripts/result-handlers.js";
-  document.body.appendChild(script);
-}
-
 function fillSummaryHtml() {
   switch (formatValue.value) {
     case "paragraphs":
@@ -138,9 +103,6 @@ function createParagraphs() {
     setTimeout(() => {
       function typing() {
         if (j >= paragraphLength) return;
-        console.log("idx: ", idx);
-        console.log("j: ", j);
-        console.log("paragraphLength inside: ", paragraphLength);
         const answerP = document.getElementById(`answer-paragraph-${idx}`);
         answerP.innerHTML += paragraph[j];
 
@@ -161,7 +123,7 @@ function createTweetsAndBullets() {
   resumeContainer.appendChild(listElem);
   const splittedAnswer = answerSummary.split(/\n/g).filter((p) => p !== "");
   let childEl;
-  let currIdx = console.log("splittedAnswer: ", splittedAnswer);
+  console.log("splittedAnswer: ", splittedAnswer);
   splittedAnswer.forEach((paragraph, idx) => {
     let j = 0;
     const paragraphLength = paragraph.length;

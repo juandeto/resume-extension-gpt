@@ -1,14 +1,11 @@
-const mainContainer = document.getElementById("main-container");
-const yearsValue = document.getElementById("years");
-const languageValue = document.getElementById("language");
+var yearsValue = document.getElementById("years");
+var languageValue = document.getElementById("language");
 
-const submitExplanationButton = document.getElementById(
-  "explain-submit-button"
-);
-const formExplanationElem = document.querySelector("#explanation-form");
+var submitExplanationButton = document.getElementById("explain-submit-button");
+var formExplanationElem = document.querySelector("#explanation-form");
 
-const urlParams = new URLSearchParams(window.location.search);
-const selectedText = urlParams.get("text");
+var urlParams = new URLSearchParams(window.location.search);
+var selectedText = urlParams.get("text");
 
 var answerExplanation;
 var speed = 35;
@@ -21,7 +18,10 @@ formExplanationElem.addEventListener("submit", async (e) => {
     setSpinner(true);
     const fetchOptions = buildExplainFetchOptions();
 
-    const res = await fetch(`http://localhost:8000/api/explain`, fetchOptions);
+    const res = await fetch(
+      `http://localhost:8000/gptapi/explain`,
+      fetchOptions
+    );
 
     await res.json().then((text) => {
       setSpinner(false);
@@ -44,6 +44,7 @@ function buildExplainFetchOptions() {
     text: selectedText,
     years: yearsValue.value,
     language: languageValue.value,
+    key: window?.localStorage?.getItem("openai-key") || null,
   };
 
   const fetchOptions = {
@@ -62,37 +63,40 @@ function setExplanationHtml() {
   mainContainer.innerHTML = `
   <div class="title" role="heading">
     <h1>Bluesetta-GPT</h1>
-    <img src="./assets/rosetta.png" />
+    <img src="../assets/rosetta.png" />
     </div>
-    <div class="answer-container">
-    <h2>Your explanation:</h2>
-    <div class="answer-content" id="answer-content">
+  <div class="answer-container">
+      <h2>Your explanation:</h2>
+      <div class="answer-content" id="answer-content">
+      </div>
+    <div class="answer-options">
+      <button class="icon-button" id="expand-answer">
+        <span class="circle">
+          <img src="../assets/expand.svg" alt="copy icon" />
+        </span>
+        <span class="hover-text">Expand</span>
+      </button>
+      <button class="icon-button" id="copy-answer">
+        <span class="circle">
+          <img src="../assets/copy.svg" alt="copy icon" />
+        </span>
+        <span class="hover-text copy-text">Copy</span>
+      </button>
+      <button class="icon-button" id="download-answer">
+        <span class="circle">
+          <img src="../assets/download.svg" alt="download icon" />
+        </span>
+        <span class="hover-text">Download</span>
+      </button>
     </div>
-  <div class="answer-options">
-    <button class="icon-button" id="expand-answer">
-      <span class="circle">
-        <img src="./assets/expand.svg" alt="copy icon" />
-      </span>
-      <span class="hover-text">Expand</span>
-    </button>
-    <button class="icon-button" id="copy-answer">
-      <span class="circle">
-        <img src="./assets/copy.svg" alt="copy icon" />
-      </span>
-      <span class="hover-text copy-text">Copy</span>
-    </button>
-    <button class="icon-button" id="download-answer">
-      <span class="circle">
-        <img src="./assets/download.svg" alt="download icon" />
-      </span>
-      <span class="hover-text">Download</span>
-    </button>
-  </div>
   </div>
         `;
-  const script = document.createElement("script");
-  script.src = "scripts/result-handlers.js";
-  document.body.appendChild(script);
+  if (!document.getElementById("script-result-explain")) {
+    const script = document.createElement("script");
+    script.src = "./src/scripts/result-handlers.js";
+    script.id = "script-result-explain";
+    document.body.appendChild(script);
+  }
 }
 
 function fillExplanationHtml() {
@@ -104,7 +108,6 @@ function createParagraphs() {
 
   const splittedAnswer = answerExplanation.split(/\n/g).filter((p) => p !== "");
   let childEl;
-  console.log("splittedAnswer: ", splittedAnswer);
 
   splittedAnswer.forEach((paragraph, idx) => {
     let j = 0;

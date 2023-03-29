@@ -1,4 +1,5 @@
 from fastapi import APIRouter, HTTPException, status
+from fastapi.concurrency import run_in_threadpool
 from schemas.schemas import ResumeBody, ExplanationBody
 from utils.prompt import createSummaryPrompt, createPromptExplanation
 from datetime import date
@@ -8,11 +9,8 @@ import openai
 import os
 import re
 
-openai.api_key = os.environ['OPENAI_API_KEY']
 
-print("ENVIRON")
-print(os.environ['OPENAI_API_KEY'])
-prefix_gpt = APIRouter(prefix="/api")
+prefix_gpt = APIRouter(prefix="/gptapi")
 
 p1 = "Eres un asistente que nunca dice" 
 p2 = "que no puede dar la respuesta.... Add your instructions! "
@@ -49,7 +47,12 @@ async def get_summary(body: ResumeBody):
     if doesItLookLikeSystemInstructions(body.text):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="System instructions are not allowed.")
 
-    handleLimitsOfCalls()
+    if body.key:
+        openai.api_key = body.key
+    else:
+        handleLimitsOfCalls()
+        openai.api_key = os.environ['OPENAI_API_KEY']
+
 
 
     prompt = createSummaryPrompt(body.text, 
@@ -58,13 +61,16 @@ async def get_summary(body: ResumeBody):
                           body.language, 
                           body.explanation_type)
     
-    summary = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-                {"role": "user", "content": prompt},
-            ]
-        )
-    print(f'summary: {summary}' )
+    try:
+        summary = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                    {"role": "user", "content": prompt},
+                ]
+            )
+    except Exception as inst:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=inst.args)
+
     if summary["choices"][0]["finish_reason"] == "stop":
         return summary["choices"][0]["message"]["content"]
     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Try again.")
@@ -75,23 +81,35 @@ async def get_summary(body: ResumeBody):
 @prefix_gpt.post("/explain", status_code=status.HTTP_200_OK)
 async def get_explanation(body: ExplanationBody):
 
+    if not body.text or len(body.text) == 0:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=f"You have to enter some text.")
+
     if len(body.text) > MAX_AMOUNT_CHARS:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=f"Max amount of characters is {MAX_AMOUNT_CHARS}.")
 
     if doesItLookLikeSystemInstructions(body.text):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="System instructions are not allowed.")
-    
-    handleLimitsOfCalls()
+
+    ## if users provides his own api
+    if body.key:
+        openai.api_key = body.key
+    else:
+        handleLimitsOfCalls()
+        openai.api_key = os.environ['OPENAI_API_KEY']
 
     prompt = createPromptExplanation(body.text, body.years, body.language)
 
-    explanation = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-                {"role": "user", "content": prompt},
-            ]
-        )
-    print(f'explanation: {explanation}' )
+    try:
+        explanation =  openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                    {"role": "user", "content": prompt},
+                ]
+            )
+    except Exception as inst:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=inst.args[0])
+
+
     if explanation["choices"][0]["finish_reason"] == "stop":
         return explanation["choices"][0]["message"]["content"]
     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Try again.")

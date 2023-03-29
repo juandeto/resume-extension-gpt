@@ -1,10 +1,7 @@
-const explainBox = document.getElementById("explain-box");
-const summaryBox = document.getElementById("summary-box");
-const mainBody = document.getElementById("main-container");
+var mainContainer = document.getElementById("main-container");
+var explainBox = document.getElementById("explain-box");
+var summaryBox = document.getElementById("summary-box");
 var optionSelected = "";
-
-const keyButtonForm = document.getElementById("key-button");
-const keyForm = document.getElementById("key-form");
 
 summaryBox.addEventListener("click", () => {
   optionSelected = "summary";
@@ -18,7 +15,7 @@ explainBox.addEventListener("click", () => {
 });
 
 function setSummaryHtml() {
-  mainBody.innerHTML = `
+  mainContainer.innerHTML = `
     <div class="title" role="heading">
     <h1>Bluesetta-GPT</h1>
     <img src="./assets/rosetta.png" />
@@ -63,16 +60,18 @@ function setSummaryHtml() {
     </div>
   </form>
           `;
+
   const scriptForMenuOptions = document.createElement("script");
-  scriptForMenuOptions.src = "scripts/summary-options-handlers.js";
+  scriptForMenuOptions.src = "./src/scripts/summary-options-handlers.js";
+  scriptForMenuOptions.id = "menu-options.script";
   document.body.appendChild(scriptForMenuOptions);
   const scriptForControl = document.createElement("script");
-  scriptForControl.src = "scripts/summary-control.js";
+  scriptForControl.src = "./src/scripts/summary-control.js";
   document.body.appendChild(scriptForControl);
 }
 
 function setExplainAsHtml() {
-  mainBody.innerHTML = `
+  mainContainer.innerHTML = `
       <div class="title" role="heading">
       <h1>Bluesetta-GPT</h1>
       <img src="./assets/rosetta.png" />
@@ -101,9 +100,9 @@ function setExplainAsHtml() {
       </div>
     </form>
             `;
-
   const scriptForControl = document.createElement("script");
-  scriptForControl.src = "scripts/explanation-control.js";
+  scriptForControl.src = "./src/scripts/explanation-control.js";
+  scriptForControl.id = "script-for-explain";
   document.body.appendChild(scriptForControl);
 }
 
@@ -121,7 +120,6 @@ function setSpinner(state) {
 function setApiError(error) {
   mainContainer.innerHTML = "";
   if (error.message.includes("Limits")) {
-    console.log("entra aca??");
     mainContainer.innerHTML = `
     <div class="title" role="heading">
       <h1>IA Resume</h1>
@@ -143,28 +141,29 @@ function setApiError(error) {
       </form>
     </div>
     `;
+
+    const scriptForErrors = document.createElement("script");
+    scriptForErrors.src = "./src/scripts/error-scripts.js";
+    scriptForErrors.id = "error-scripts1";
+    document.body.appendChild(scriptForErrors);
     return;
   }
   mainContainer.innerHTML = `
-    <div class="title" role="heading">
-      <h1>IA Resume</h1>
-    </div>
+  <div class="title" role="heading">
+  <h1>IA Resume</h1>
+  <img src="./assets/rosetta.png" />
+</div>
+<div id="main-container">
+  <form class="key-error" action="" id="key-form">
     <div class="error-content">${error.message?.detail || error.message}</div>
-    <div class="error-explanation">
-      Please, close the popup and try again.
+    <div class="button-container">
+      <button type="submit" id="go-back">Quit</button>
     </div>
+  </form>
+</div>
     `;
+  const scriptForErrors = document.createElement("script");
+  scriptForErrors.src = "./src/scripts/error-scripts.js";
+  scriptForErrors.id = "error-scripts2";
+  document.body.appendChild(scriptForErrors);
 }
-
-keyForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const userKey = e.target.key.value;
-
-  window.localStorage.setItem("key", userKey);
-
-  if (optionSelected === "explain") {
-    setExplainAsHtml();
-  } else {
-    setSummaryHtml();
-  }
-});

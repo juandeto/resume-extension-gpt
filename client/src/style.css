@@ -266,13 +266,11 @@ input, select {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(5px);
-  background-size: 100%;
-  
 }
 
 .answer-content {
     margin-bottom: 16px;
-    height: calc(100% - 196px);
+    height: calc(100% - 220px);
     overflow: auto;
     background: var(--white);
     border-radius: 4px;
@@ -375,6 +373,7 @@ input, select {
     font-weight: 500;
     margin-bottom: 16px;
     color: red;
+    text-align: center;
 }
 
 .error-explanation p {

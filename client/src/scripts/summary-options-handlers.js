@@ -1,26 +1,26 @@
-const formatSelectElement = document.getElementById("format");
-const longSelectElement = document.getElementById("long");
-const explainAsFiveCheckbox = document.getElementById("explain-as-five");
+var formatSelectElement = document.getElementById("format");
+var longSelectElement = document.getElementById("long");
+var explainAsFiveCheckbox = document.getElementById("explain-as-five");
 
-const FORMATS = {
+var FORMATS = {
   PARAGRAPH: "paragraphs",
   BULLET: "bullets",
   TWEET: "tweets",
 };
 
-const paragraphLongValues = [
+var paragraphLongValues = [
   {value: "1", text: "1"},
   {value: "2", text: "2"},
   {value: "3", text: "3"},
 ];
-const bulletsLongValues = [
+var bulletsLongValues = [
   {value: "4", text: "4"},
   {value: "6", text: "6"},
   {value: "8", text: "8"},
   {value: "10", text: "10"},
 ];
 
-const tweetsLongValues = [
+var tweetsLongValues = [
   {value: "1", text: "1"},
   {value: "2", text: "2"},
   {value: "3", text: "3"},

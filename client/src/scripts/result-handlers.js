@@ -1,15 +1,14 @@
-const copyButton = document?.getElementById("copy-answer");
-const copyText = document.querySelector(".copy-text");
-const downloadButton = document.getElementById("download-answer");
-const answerContent = document.getElementById("answer-content");
-const expandButton = document.getElementById("expand-answer");
+var copyButton = document?.getElementById("copy-answer");
+var copyText = document.querySelector(".copy-text");
+var downloadButton = document.getElementById("download-answer");
+var answerContent = document.getElementById("answer-content");
+var expandButton = document.getElementById("expand-answer");
 
-const paragraphs = document.querySelectorAll(".typewriter");
+var paragraphs = document.querySelectorAll(".typewriter");
 
 // methods in the menu options
 
 copyButton?.addEventListener("click", () => {
-  console.log("copyButton: ", copyButton);
   copyContent(answerContent.innerText);
   copyText.innerText = "Copied to clipboard";
 });
@@ -52,5 +51,4 @@ async function expandCurrentWindow() {
     height: 850,
     left: 0,
   });
-  console.log("window: ", window);
 }
