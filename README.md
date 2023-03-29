@@ -16,9 +16,10 @@ c. after you finish the task: add the changes you want to save, make a commit an
 ## 2. Structure of the project.
  
       <root>
-        ├── front             => this is the extension
+        ├── client          => this is the extension
         ├── api             => this is the python api
-   
+        ├── nfp-deploy      => some bash commands to dpeloy
+        
 ## 3. How to test and develop the extensión.
   
 a. open the Chrome browser and click on the *Menu options* (the three points at the right in the bar)
