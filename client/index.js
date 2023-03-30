@@ -17,11 +17,10 @@ explainBox.addEventListener("click", () => {
 function setSummaryHtml() {
   mainContainer.innerHTML = `
     <div class="title" role="heading">
-    <h1>Bluesetta-GPT</h1>
-    <img src="./assets/rosetta.png" />
+      <h1>Pollux</h1>
+      <img src="./assets/twins2.png" /> 
     </div>
     <form id="summary-form" action="#">
-    <h2>Summary selected text in:</h2>
   <div class="option-container">
     <label for="format" class="label">
       Format
@@ -73,11 +72,10 @@ function setSummaryHtml() {
 function setExplainAsHtml() {
   mainContainer.innerHTML = `
       <div class="title" role="heading">
-      <h1>Bluesetta-GPT</h1>
-      <img src="./assets/rosetta.png" />
+        <h1>Pollux</h1>
+        <img src="./assets/twins2.png" />
       </div>
       <form action="#" id="explanation-form">
-      <h2>Explain selected text:</h2>
       <div class="option-container">
           <label for="years" class="label">As if I'm</label>
           <select name="years" id="years">
@@ -122,8 +120,8 @@ function setApiError(error) {
   if (error.message.includes("Limits")) {
     mainContainer.innerHTML = `
     <div class="title" role="heading">
-      <h1>IA Resume</h1>
-      <img src="./assets/rosetta.png" />
+      <h1>Pollux</h1>
+      <img src="./assets/twins2.png" />
     </div>
     <div id="main-container">
       <form class="key-error" action="#" id="key-form">
@@ -149,9 +147,9 @@ function setApiError(error) {
     return;
   }
   mainContainer.innerHTML = `
-  <div class="title" role="heading">
-  <h1>IA Resume</h1>
-  <img src="./assets/rosetta.png" />
+<div class="title" role="heading">
+    <h1>Pollux</h1>
+    <img src="./assets/twins2.png" />
 </div>
 <div id="main-container">
   <form class="key-error" action="" id="key-form">

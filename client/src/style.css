@@ -1,7 +1,7 @@
 :root {
-  --blue: #00649C;
-  --blue-light: #006faf2a;
-  --white: #ffffff;
+  --blue: #000080;
+  --blue-light: rgba(0, 111, 175, 0.87);
+  --white: #ebebeb;
   --black: #050505;
 }
 
@@ -9,29 +9,36 @@
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, p, label, input, option, select{
-  color: var(--black);
+h1, h2, h3, h4, p, input, option, select{
+  color: var(--white);
+  text-rendering: optimizelegibility;
+}
+
+label {
+  color: var(--white);
 }
 
 body {
   height: 100vh;
   margin: 0;
   padding: 0;
-    overflow: hidden;
-    background: linear-gradient(357.99deg, #A3BFF3 -15.92%, #FCFCFE 121.85%);
-    box-shadow: 0px 60px 100px rgba(0, 0, 0, 0.25);
-    font-family: 'prompt', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
+  overflow: hidden;
+  background: hsl(274deg 16% 8%);
+  box-shadow: 0px 60px 100px rgba(0, 0, 0, 0.25);
+  font-family: 'prompt', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
-    .gradient{
+.gradient{
       position: absolute;
       width: 100%;
       height: 100%;
-      background: radial-gradient(65.67% 65.67% at 41.2% 34.33%, #4BD4FF 0%, rgba(208, 75, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+      background: radial-gradient(65.67% 65.67% at 41.2% 34.33%, var(--blue) 0%, rgba(208, 75, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
       filter: blur(286.13px);
       border-radius: 1120.23px;
       transform: rotate(62.18deg);
   
-    }
+}
+
 #main-container {
   height: 100%;
   margin: 0 auto;
@@ -47,7 +54,7 @@ body {
     text-align: left;
     padding: 16px;
     padding-bottom: 0;
-    height: 230px;
+    height: 240px;
     max-width: 500px;
     margin: 0 auto;
 }
@@ -56,12 +63,18 @@ body {
   position: relative;
     text-align: center;
     font-style: normal;
-    color: rgba(0, 0, 0, 0.8);
     font-weight: 700;
     font-size: 30px;
     line-height: 22px;
     z-index: 1;
-}
+    letter-spacing: 0.11rem;
+    background-image: linear-gradient(200.67deg, rgb(255, 255, 255) 25%, rgb(255, 240, 102) 35%, rgb(255, 163, 26) 55.54%, rgb(255, 0, 115) 75%);
+    background-size: 100%;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    -webkit-background-clip: text;
+  }
 
 .title img {
   position: absolute;
@@ -70,10 +83,12 @@ body {
   top: 58px;
   left: 50%;
   transform: translateX(-50%);
+  border-radius: 50%;
+  background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.004) 8.1%, rgba(255, 255, 255, 0.008) 15.5%, rgba(255, 255, 255, 0.016) 22.5%, rgba(255, 255, 255, 0.027) 29%, rgba(255, 255, 255, 0.04) 35.3%, rgba(255, 255, 255, 0.055) 41.2%, rgba(255, 255, 255, 0.067) 47.1%, rgba(255, 255, 255, 0.082) 52.9%, rgba(255, 255, 255, 0.098) 58.8%, rgba(255, 255, 255, 0.11) 64.7%, rgba(255, 255, 255, 0.125) 71%, rgba(255, 255, 255, 0.133) 77.5%, rgba(255, 255, 255, 0.14) 84.5%, rgba(255, 255, 255, 0.15) 91.9%, rgba(255, 255, 255, 0.15) 100%);
 }
 
 #main-container form {
-  height: calc(100% - 230px);
+  height: calc(100% - 240px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,11 +106,12 @@ body {
   text-align: left;
   max-width: 500px;
   margin: 0 auto;
+  color: rgba(0, 0,0 , 0.6);
 }
 
 .options-container {
   padding: 16px;
-  height: calc(100% - 230px);
+  height: calc(100% - 240px);
   max-height: 800px;
   display: flex;
   flex-direction: column;
@@ -188,22 +204,22 @@ body {
 .button-container button, #get-key {
     width: 100%;
     max-width: 500px;
-
-    color: var(--white);    border: none;
+    border: none;
+    color: var(--white);  
     cursor: pointer;
     height: 45px;
     font-size: 1.1rem;
     letter-spacing: 0.09rem;
     font-weight: bold;
     transition: all 400ms ease;
-    background: linear-gradient(117.72deg, #81C6ED 19.44%, #346AD2 91.59%);
+    background: linear-gradient( 245deg, hsl(333deg 100% 52%) 5%, hsl(333deg 100% 40%) 90% );
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+    font-weight: 600;
+    text-shadow: 0px 1px 1px rgb(230, 0, 103);
     border-radius: 16px;
     transition: background 400ms ease;
-}
-
-.button-container button:hover {
- background: linear-gradient(117.72deg, #6297b6 19.44%, #3161b9 91.59%);
+    color: rgba(255, 255, 255, 0.8);
+    text-underline-offset: 2px;
 }
 
 .option-container {
@@ -221,7 +237,11 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-    margin-top: 16px;
+  margin-top: 16px;
+}
+
+.checkbox input {
+  backdrop-filter: none !important;
 }
 
 input, select {
@@ -291,14 +311,14 @@ input, select {
 .answer-content  > .tweets {
   list-style-type: none;
   margin-block-start: 0;
-  padding-inline-start: 0;
+  padding-inline-start: 8px;
   font-size: 1rem;
   line-height: 1.75;
 }
 
 .answer-content  > .bullets {
   list-style-type: disc;
-  padding-inline-start: 8px;
+  padding-inline-start: 24px;
   font-size: 1rem;
   line-height: 1.75;
 }
@@ -338,10 +358,10 @@ input, select {
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
-  background: linear-gradient(139.57deg, #B9C9E9 13.2%, #9EB1D6 77%);
+  background: linear-gradient(139.57deg, var(--blue-light) 13.2%, var(--blue) 77%);
   box-shadow: 0px 0.5px 0.5px rgba(0, 0, 0, 0.25), 0px 10px 20px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(30px);
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   transition: opacity 400ms ease;
 }
 

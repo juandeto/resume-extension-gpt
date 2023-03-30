@@ -19,10 +19,9 @@ formExplanationElem.addEventListener("submit", async (e) => {
     const fetchOptions = buildExplainFetchOptions();
 
     const res = await fetch(
-      `http://localhost:8000/gptapi/explain`,
+      `https://nookdeco.com.ar/gptapi/explain`,
       fetchOptions
     );
-
     await res.json().then((text) => {
       setSpinner(false);
 
@@ -62,9 +61,9 @@ function buildExplainFetchOptions() {
 function setExplanationHtml() {
   mainContainer.innerHTML = `
   <div class="title" role="heading">
-    <h1>Bluesetta-GPT</h1>
-    <img src="../assets/rosetta.png" />
-    </div>
+    <h1>Pollux</h1>
+    <img src="./assets/twins2.png" />
+  </div>
   <div class="answer-container">
       <h2>Your explanation:</h2>
       <div class="answer-content" id="answer-content">
@@ -106,28 +105,32 @@ function fillExplanationHtml() {
 function createParagraphs() {
   const resumeContainer = document.getElementById("answer-content");
 
-  const splittedAnswer = answerExplanation.split(/\n/g).filter((p) => p !== "");
+  const paragraphs = answerExplanation.split(/\n/g).filter((p) => p !== "");
   let childEl;
 
-  splittedAnswer.forEach((paragraph, idx) => {
-    let j = 0;
-    const paragraphLength = paragraph.length;
+  function typewriterEffect(textArray, index) {
     childEl = document.createElement("p");
-    childEl.id = `answer-paragraph-${idx}`;
+    childEl.id = `answer-paragraph-${index}`;
     resumeContainer.appendChild(childEl);
+    console.log("textArray, index: ", textArray, index);
+    if (index < textArray.length) {
+      let j = 0;
 
-    setTimeout(() => {
-      function typing() {
-        if (j >= paragraphLength) return;
-
-        const answerP = document.getElementById(`answer-paragraph-${idx}`);
-        answerP.innerHTML += paragraph[j];
+      const interval = setInterval(() => {
+        const answerP = document.getElementById(`answer-paragraph-${index}`);
+        answerP.innerHTML += textArray[index].charAt(j);
 
         j++;
 
-        setTimeout(typing, speed);
-      }
-      typing();
-    }, idx * paragraph.length * speed);
-  });
+        if (j >= textArray[index].length) {
+          clearInterval(interval);
+          setTimeout(function () {
+            typewriterEffect(textArray, index + 1);
+          }, 400); // set a delay before starting the next paragraph
+        }
+      }, speed);
+    }
+  }
+
+  typewriterEffect(paragraphs, 0);
 }

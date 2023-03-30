@@ -1,7 +1,7 @@
 {
-  "name": "Summary IA",
+  "name": "Pollux GPT",
   "version": "1.0",
-  "description": "Summarizes articles, news and blogs",
+  "description": "Explains and summarizes selected text with GPT ",
   "permissions": [
     "contextMenus"
   ],

@@ -29,8 +29,8 @@ var tweetsLongValues = [
 ];
 
 // event that triggers the long options/values to change when format changes
-formatSelectElement.addEventListener("change", () =>
-  renderLongValues(formatSelectElement.value)
+formatSelectElement?.addEventListener("change", () =>
+  renderLongValues(formatSelectElement?.value)
 );
 
 function renderLongValues(value) {
