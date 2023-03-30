@@ -1,0 +1,5 @@
+export USER=""
+export HOST=""
+export DOMAIN=""
+export SSH_KEY_PATH=""
+export DO_PASSWORD=""

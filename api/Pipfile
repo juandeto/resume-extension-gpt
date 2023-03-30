@@ -7,7 +7,6 @@ name = "pypi"
 fastapi = "*"
 uvicorn = "*"
 openai = "*"
-pyrebase = "*"
 firebase-admin = "*"
 
 [dev-packages]

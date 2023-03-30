@@ -1,0 +1,22 @@
+{
+  "name": "Pollux GPT",
+  "version": "1.0",
+  "description": "Explains and summarizes selected text with GPT ",
+  "permissions": [
+    "contextMenus"
+  ],
+  "icons": {
+    "16": "./assets/magic-wand.png",
+    "32": "./assets/magic-wand.png",
+    "48": "./assets/magic-wand.png",
+    "128": "./assets/magic-wand.png"
+  },
+  "background": {
+    "service_worker": "./src/background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 3
+}
+

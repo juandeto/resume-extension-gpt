@@ -16,9 +16,10 @@ c. after you finish the task: add the changes you want to save, make a commit an
 ## 2. Structure of the project.
  
       <root>
-        ├── src             => this is the extension
+        ├── client          => this is the extension
         ├── api             => this is the python api
-   
+        ├── nfp-deploy      => some bash commands to dpeloy
+        
 ## 3. How to test and develop the extensión.
   
 a. open the Chrome browser and click on the *Menu options* (the three points at the right in the bar)
@@ -42,7 +43,7 @@ First, make sure you have installed python3 (v. 3.8) and pipenv.
   - For Windows: https://www.youtube.com/watch?v=l2_5wiYg5dY&ab_channel=CodingEntrepreneurs
   - For MacOs: https://www.youtube.com/watch?v=VdKqxxjUGhQ&ab_channel=CodingEntrepreneurs
 
-a. Open a terminal and navigate to the root/api folder
+a. Open a terminal and navigate to the root/gptapi folder
 b. Create a file .env ann add the variable OPENAI_API_KEY. There's a -env-example if you want to checkout.
 c. Run the command: pipenv shell
 d. Then run the command: uvicorn main:app --reload
