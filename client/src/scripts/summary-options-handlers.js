@@ -1,6 +1,5 @@
 var formatSelectElement = document.getElementById("format");
 var longSelectElement = document.getElementById("long");
-var explainAsFiveCheckbox = document.getElementById("explain-as-five");
 
 var FORMATS = {
   PARAGRAPH: "paragraphs",

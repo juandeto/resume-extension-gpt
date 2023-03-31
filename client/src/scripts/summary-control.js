@@ -1,9 +1,10 @@
 var formatValue = document.getElementById("format");
 var longValue = document.getElementById("long");
 var translateValue = document.getElementById("language");
-var explainAsFiveValue = document.getElementById("explain-as-five");
+var explainAsFiveValue = false;
 var resumeButton = document.getElementById("summary-submit-button");
 var formElem = document.querySelector("#summary-form");
+var explainAsFiveCheckbox = document.getElementById("explain-as-five");
 
 var urlParams = new URLSearchParams(window.location.search);
 var selectedText = urlParams.get("text");
@@ -11,12 +12,15 @@ var MAX_LENGTH_TEXT = 5000;
 var answerSummary;
 var speed = 35;
 
-explainAsFiveValue?.addEventListener("change", (event) => {
-  if (event.target.checked) {
-    explainAsFiveValue.value = "checked";
-  } else {
-    explainAsFiveValue.value = "unchecked";
+explainAsFiveCheckbox.addEventListener("click", () => {
+  if (!explainAsFiveValue) {
+    explainAsFiveCheckbox.classList.add("checkbox-active");
+    explainAsFiveValue = true;
+    return;
   }
+  explainAsFiveCheckbox.classList.remove("checkbox-active");
+  explainAsFiveValue = false;
+  return;
 });
 
 // function that runs when "generate summary" is clicked
@@ -55,7 +59,7 @@ function buildFetchOptions() {
     format: formatValue.value,
     long: Number(longValue.value),
     language: translateValue.value,
-    explanation_type: explainAsFiveValue.value === "checked",
+    explanation_type: explainAsFiveValue,
   };
 
   const fetchOptions = {
