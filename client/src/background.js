@@ -10,8 +10,8 @@ chrome.contextMenus.onClicked.addListener(async function (clickData) {
     let url = "popup.html?text=" + encodeURIComponent(clickData.selectionText);
     await chrome.windows.create({
       url: url,
-      width: 393,
-      height: 655,
+      width: 453,
+      height: 685,
       type: "popup",
       left: 0,
     });

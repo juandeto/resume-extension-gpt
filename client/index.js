@@ -48,11 +48,21 @@ function setSummaryHtml() {
             <option value="french">French</option>
         </select>
     </div>
-    <div class="option-container checkbox" id="type-explanation">
-        <label for="explanation_type" class="label">
+    <div class="option-container checkbox-container">
+        <label for="explain-as-five" class="label">
             Explain it as I was 5 years old.
         </label>
-            <input id="explain-as-five" type="checkbox" value="unchecked" name="explanation_type">
+        <svg
+          id="explain-as-five"
+          class='checkbox'
+          // This element is purely decorative so
+          // we hide it for screen readers
+          aria-hidden="true"
+          viewBox="0 0 16 11"
+          fill="none"
+        >
+          <path d="M1 4.5L5 9L14 1" strokeWidth="2" />
+        </svg>
     </div>
     <div class="button-container">
       <button type="submit" id="summary-submit-button">Get Summary</button>
