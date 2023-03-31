@@ -74,7 +74,6 @@ async def get_summary(body: ResumeBody):
     if summary["choices"][0]["finish_reason"] == "stop":
         return summary["choices"][0]["message"]["content"]
     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Try again.")
-    # return "- A sector of the Kirchnerism movement will include a slogan related to the legal situation of Cristina Kirchner, the ex-president of Argentina, in the march for the Day of Memory, commemorating the coup d'\u00e9tat of 1976.\n- The Patria es el Otro, the new pro-Kirchnerist front led by Andr\u00e9s \"Cuervo\" Larroque, summoned the march with the slogan \"Democracy without proscription\".\n- The mobilization is usually of interest to M\u00e1ximo Kirchner, who, since 2017, marches with La C\u00e1mpora from the ESMA to Plaza de Mayo, on Avenida Del Libertador and Leandro N. Alem. \n- However, there are differences within the organization regarding the Day of Memory's slogans and actions, which highlight deeper differences that already existed.\n- One of the ideas proposed was to organize a great mobilization in defense of the vice president, Cristina Kirchner. However, this plan was deactivated due to opposition from the organizations focused on defending human rights.\n- The situation was controlled, but the issue resurfaced during a meeting, and it remains to be seen whether a portion of the movement will demonstrate in front of the Court during the march."
 
 
 

@@ -1,7 +1,7 @@
 {
-  "name": "Pollux GPT",
-  "version": "1.0",
-  "description": "Explains and summarizes selected text with GPT ",
+  "name": "Pollux",
+  "version": "1.1",
+  "description": "Summarize and explain: instant processing of selected text with GPT while browsing.",
   "permissions": [
     "contextMenus"
   ],

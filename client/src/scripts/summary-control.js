@@ -92,15 +92,15 @@ function fillSummaryHtml() {
 
 function createParagraphs() {
   const resumeContainer = document.getElementById("answer-content");
-
-  const paragraphs = answerSummary.split(/\n/g).filter((p) => p !== "");
+  const paragraphs = answerSummary
+    .split(/\n/g)
+    .filter((p) => p !== "" || p !== " ");
   let childEl;
 
   function typewriterEffect(textArray, index) {
     childEl = document.createElement("p");
     childEl.id = `answer-paragraph-${index}`;
     resumeContainer.appendChild(childEl);
-    console.log("textArray, index: ", textArray, index);
 
     if (index < textArray.length) {
       let j = 0;
@@ -134,7 +134,6 @@ function createTweetsAndBullets() {
   let childEl;
 
   function typewriterEffect(textArray, index) {
-    let j = 0;
     childEl = document.createElement("li");
     childEl.id = `answer-li-${index}`;
     listElem.appendChild(childEl);
@@ -168,7 +167,7 @@ function setSummaryResultHtml() {
     <img src="./assets/twins2.png" />
   </div>
   <div class="answer-container">
-      <h2>Your summary:</h2>
+      <h2>Text summary:</h2>
       <div class="answer-content" id="answer-content">
       </div>
     <div class="answer-options">
