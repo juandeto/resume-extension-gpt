@@ -2,6 +2,8 @@ var mainContainer = document.getElementById("main-container");
 var explainBox = document.getElementById("explain-box");
 var summaryBox = document.getElementById("summary-box");
 var optionSelected = "";
+var urlParams = new URLSearchParams(window.location.search);
+var selectedText = urlParams.get("text");
 
 summaryBox.addEventListener("click", () => {
   optionSelected = "summary";
@@ -13,6 +15,23 @@ explainBox.addEventListener("click", () => {
 
   setExplainAsHtml();
 });
+
+if (!selectedText?.length) {
+  mainContainer.innerHTML = `
+    <div class="title" role="heading">
+      <h1>Pollux</h1>
+      <img src="./assets/twins2.png" /> 
+    </div>
+    <div >
+    <form class="key-error" action="" id="key-form">
+        <div class="error-content"><strong>ATENTION!</strong> </br></br> You have to select a text from the screen and then make right click on it to use Pollux.</div>
+        <div class="button-container">
+        <button type="submit" id="go-back">Quit</button>
+        </div>
+    </form>
+    </div>
+          `;
+}
 
 function setSummaryHtml() {
   mainContainer.innerHTML = `

@@ -16,6 +16,8 @@ h1, h2, h3, h4, p, label, input, option, select{
 }
 
 body {
+  min-height: 450px;
+  min-width: 453px;
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -399,6 +401,7 @@ input:focus, select:focus {
 
 .key-error {
   justify-content: space-between !important;
+  min-height: 250px;
 }
 
 .error-content {
