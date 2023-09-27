@@ -3,7 +3,8 @@
   "version": "1.1.1",
   "description": "Summarize and explain: instant processing of selected text with GPT while browsing.",
   "permissions": [
-    "contextMenus"
+    "tabs",
+    "scripting"
   ],
   "icons": {
     "16": "./assets/magic-wand.png",
@@ -11,11 +12,13 @@
     "48": "./assets/magic-wand.png",
     "128": "./assets/magic-wand.png"
   },
+  "host_permissions": [
+    "*://*/*"
+  ],
   "background": {
     "service_worker": "./src/background.js"
   },
   "action": {
-    "default_popup": "popup.html"
   },
   "manifest_version": 3
 }

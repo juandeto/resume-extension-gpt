@@ -5,6 +5,9 @@ var optionSelected = "";
 var urlParams = new URLSearchParams(window.location.search);
 var selectedText = urlParams.get("text");
 
+var tabUrl = urlParams.get("url");
+console.log("url: ", tabUrl);
+
 summaryBox.addEventListener("click", () => {
   optionSelected = "summary";
   setSummaryHtml();
@@ -16,7 +19,7 @@ explainBox.addEventListener("click", () => {
   setExplainAsHtml();
 });
 
-if (!selectedText?.length) {
+if (!tabUrl && !selectedText?.length) {
   mainContainer.innerHTML = `
     <div class="title" role="heading">
       <h1>Pollux</h1>
@@ -194,3 +197,21 @@ function setApiError(error) {
   scriptForErrors.id = "error-scripts2";
   document.body.appendChild(scriptForErrors);
 }
+
+// function getHtmlFile() {
+//   chrome.tabs.query({currentWindow: true, active: true}, async function (tabs) {
+//     console.log("22 tabs: ", tabs);
+//     await chrome.scripting.executeScript({
+//       target: {tabId: tabs[0].id},
+//       func: () => {
+//         const bodyHtml = document.body.innerHTML;
+//         console.log("in here!! bodyHtml > ", bodyHtml);
+//         const htmlString = bodyHtml.toString();
+
+//         console.log("html: ", htmlString);
+//       },
+//     });
+//   });
+// }
+
+// getHtmlFile();

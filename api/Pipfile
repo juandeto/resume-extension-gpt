@@ -8,6 +8,10 @@ fastapi = "*"
 uvicorn = "*"
 openai = "*"
 firebase-admin = "*"
+langchain = "*"
+unstructured = "*"
+chromadb = "*"
+bs4 = "*"
 
 [dev-packages]
 

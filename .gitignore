@@ -1,4 +1,4 @@
-./gpt-api/.env
-./gpt-api/resume-gpt-extension-firebase-adminsdk-sy6ct-6feaf119f8.json
-./gpt-api/firebase_config.json
+./api/.env
+./api/resume-gpt-extension-firebase-adminsdk-sy6ct-6feaf119f8.json
+./api/firebase_config.json
 ./nfp-deploy/vars.sh
